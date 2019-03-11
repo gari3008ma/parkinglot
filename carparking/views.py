@@ -9,6 +9,7 @@ from .models import ParkingSlots
 from django.http import QueryDict
 from .parking_utils import allocate_slot,vacant_slot,create_new_parking,add_slot_to_parking,slot_status_inparking
 
+#Used Django templates to render frontend .Html templates that are being rendered are in templates folder
 
 # Create your views here.
 # create dashboard view for first page and take input the number of slots that we want to have in our parking lot
