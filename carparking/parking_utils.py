@@ -17,7 +17,14 @@ def add_slot_to_parking(add_num):
 	for dis in range(distance+1,distance+int(add_num)):
 		v,created=ParkingSlots.objects.get_or_create(slot_id=dis,distance=dis)
 
-
+def slot_status_inparking(get_slot_status):
+	slot_status = ""
+	slot_status = ParkingSlots.objects.get(slot_id=get_slot_status).availibility_status
+	if not slot_status:
+		slot_status="Car is parked in slot"
+	else:
+		slot_status="Car is not parked"	
+	return slot_status
 # to allocate slots to cars
 def allocate_slot(car_registration_num,car_color):
 	available_slot = ParkingSlots.objects.filter(availibility_status=True).order_by('distance')

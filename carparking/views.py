@@ -7,7 +7,7 @@ from django.template import Context
 import json 
 from .models import ParkingSlots
 from django.http import QueryDict
-from .parking_utils import allocate_slot,vacant_slot,create_new_parking,add_slot_to_parking
+from .parking_utils import allocate_slot,vacant_slot,create_new_parking,add_slot_to_parking,slot_status_inparking
 
 
 # Create your views here.
@@ -45,11 +45,7 @@ def dashboard(request):
 		if slot_id:
 			error_message = vacant_slot(slot_id)
 		if get_slot_status:
-			slot_status = ParkingSlots.objects.get(slot_id=get_slot_status).availibility_status
-			if not slot_status:
-				slot_status="Car is parked in slot"
-			else:
-				slot_status="Car is not parked"	
+			slot_status=slot_status_inparking(get_slot_status)
 	template = loader.get_template('carparking/dashboard.html')
 	return render(request, 'carparking/dashboard.html',{"error_message":error_message,"status":str(slot_status)})
 
