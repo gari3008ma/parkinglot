@@ -14,3 +14,11 @@ a. This would get a list of occupied slots along with registration number
 and color of car parked in respective slot.
 5. Get status of free slots
 a. This would get a list of available slots
+Instruction to run:
+1.Fetch the directory in your local
+2.Run the following commands:
+python manage.py makemigrations
+python manage.py migrate
+python  manage.py runserver
+3.visit ->localhost/carparking
+to start working on carparking lot app
