@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reservation</title>
+</head>
+<body>
+<h1>Hello Swiggy .Have a nice day!!!</h1>
+<h1>Start with filling number of slots you want in parking</h1>
+<form action="" method="post">
+    {% csrf_token %}
+    <label for="slot_numbers">Total number of parking slots</label>
+    <input id="slot_numbers" type="number" name="slot_numbers" value="{{ slot_num }}">
+    <input type="submit" value="Submit" />
+</form><br>
+<p>Add number below to add slots to existing parking lot</p>
+<form action="" method="post">
+    {% csrf_token %}
+    <label for="add_slot">Add parking slot</label>
+    <input id="add_slot" type="number" name="add_slot" value="{{ add_slot }}">
+    <input type="submit" value="Submit" />
+</form><br>
+<a href="{% url 'dashboard' %}">Click here start Parking</a>
+
+</body>
+</html>

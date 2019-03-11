@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Show slots</title>
+    {% load staticfiles %} <!-- Prepare django to load static files -->
+</head>
+<body>
+<a href="{% url 'dashboard' %}">Click here to visit dashboard</a>
+{% for slot in all_slots %}
+    <li><b>{{ slot.slot_id }}:</b> {{ slot.car_registration_number }} car color is {{ slot.car_color }}</li>
+{% endfor %}
+<h1>{{error_message}}</h1>
+<h1>Hello Swiggy .Have a nice day!!!</h1>
+  <img src={% static "image.jpg" %}>
+</body>
+</html>
