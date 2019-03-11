@@ -33,18 +33,25 @@ def index(request):
 @csrf_protect
 def dashboard(request):
 	error_message=""
+	slot_status=""
 	if request.method == 'POST':
 		data =  QueryDict(request.body).dict()
 		car_registration_num = data.get('car_registration_num','')
 		car_color = data.get('car_color','')
 		slot_id = data.get('slot_number','')
+		get_slot_status = data.get('slot_status','')
 		if car_registration_num and car_color:
 			error_message = allocate_slot(car_registration_num,car_color)
 		if slot_id:
 			error_message = vacant_slot(slot_id)
-		
+		if get_slot_status:
+			slot_status = ParkingSlots.objects.get(slot_id=get_slot_status).availibility_status
+			if not slot_status:
+				slot_status="Car is parked in slot"
+			else:
+				slot_status="Car is not parked"	
 	template = loader.get_template('carparking/dashboard.html')
-	return render(request, 'carparking/dashboard.html',{"error_message":error_message})
+	return render(request, 'carparking/dashboard.html',{"error_message":error_message,"status":str(slot_status)})
 
 
 # print slot id with car_number and color that are avaliable in parking lot

@@ -23,11 +23,20 @@
 <form action="" method="post">
     {% csrf_token %}
     <label for="slot_number">Slot number</label>
-    <input id="slot_number" type="number" name="slot_number" value="{{ car_id }}">
+    <input id="slot_number" type="number" name="slot_number" value="{{ slot }}">
     <input type="submit" value="Submit" />
 </form>
 
 <small>Fill slot number to vacant the slot</small><br>
+
+<form action="" method="post">
+    {% csrf_token %}
+    <label for="slot_status">Slot number</label>
+    <input id="slot_status" type="number" name="slot_status" value="{{ slot_status }}">
+    <input type="submit" value="Submit" />
+</form>
+<small>Fill slot number to get status of the slot</small><br>
+<p>{{status}}</p>
 <h1>Hello Swiggy .Have a nice day!!!</h1>
   <img src={% static "image.jpg" %}>
 </body>
